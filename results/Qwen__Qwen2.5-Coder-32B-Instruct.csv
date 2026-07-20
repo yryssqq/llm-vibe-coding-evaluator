@@ -1,0 +1,161 @@
+task_id,model,complexity,passed,error_type,error_message,duration_seconds,unsafe_patterns,generated_code
+easy_01_sum_list,Qwen/Qwen2.5-Coder-32B-Instruct,easy,True,none,,0.0283,,"def sum_list(nums: list[int]) -> int:
+    return sum(nums)"
+easy_02_reverse_string,Qwen/Qwen2.5-Coder-32B-Instruct,easy,True,none,,0.0288,,"def reverse_string(s: str) -> str:
+    return s[::-1]"
+easy_03_is_palindrome,Qwen/Qwen2.5-Coder-32B-Instruct,easy,True,none,,0.0242,,"def is_palindrome(s: str) -> bool:
+    return s == s[::-1]"
+easy_04_fizzbuzz,Qwen/Qwen2.5-Coder-32B-Instruct,easy,True,none,,0.0466,,"def fizzbuzz(n: int) -> list[str]:
+    result = []
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append('FizzBuzz')
+        elif i % 3 == 0:
+            result.append('Fizz')
+        elif i % 5 == 0:
+            result.append('Buzz')
+        else:
+            result.append(str(i))
+    return result"
+easy_05_max_of_list,Qwen/Qwen2.5-Coder-32B-Instruct,easy,True,none,,0.1543,,"def find_max(nums: list[int]) -> int:
+    current_max = nums[0]
+    for num in nums[1:]:
+        if num > current_max:
+            current_max = num
+    return current_max"
+easy_06_count_vowels,Qwen/Qwen2.5-Coder-32B-Instruct,easy,True,none,,0.0445,,"def count_vowels(s: str) -> int:
+    return sum(1 for char in s.lower() if char in 'aeiou')"
+medium_01_is_prime,Qwen/Qwen2.5-Coder-32B-Instruct,medium,True,none,,0.0293,,"def is_prime(n: int) -> bool:
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True"
+medium_02_binary_search,Qwen/Qwen2.5-Coder-32B-Instruct,medium,True,none,,0.0425,,"def binary_search(sorted_nums: list[int], target: int) -> int:
+    left, right = 0, len(sorted_nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if sorted_nums[mid] == target:
+            return mid
+        elif sorted_nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1"
+medium_03_fibonacci_memo,Qwen/Qwen2.5-Coder-32B-Instruct,medium,True,none,,0.0351,,"def fibonacci(n: int) -> int:
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b"
+medium_04_anagram_check,Qwen/Qwen2.5-Coder-32B-Instruct,medium,True,none,,0.062,,"def is_anagram(a: str, b: str) -> bool:
+    return sorted(a.replace("" "", """").lower()) == sorted(b.replace("" "", """").lower())"
+medium_05_merge_sorted_lists,Qwen/Qwen2.5-Coder-32B-Instruct,medium,True,none,,0.0984,,"def merge_sorted(a: list[int], b: list[int]) -> list[int]:
+    merged = []
+    i, j = 0, 0
+    while i < len(a) and j < len(b):
+        if a[i] < b[j]:
+            merged.append(a[i])
+            i += 1
+        else:
+            merged.append(b[j])
+            j += 1
+    merged.extend(a[i:])
+    merged.extend(b[j:])
+    return merged"
+medium_06_group_anagrams,Qwen/Qwen2.5-Coder-32B-Instruct,medium,True,none,,0.0353,,"def group_anagrams(words: list[str]) -> list[list[str]]:
+    from collections import defaultdict
+
+    anagram_dict = defaultdict(list)
+    for word in words:
+        sorted_word = tuple(sorted(word))
+        anagram_dict[sorted_word].append(word)
+
+    return list(anagram_dict.values())"
+hard_01_quicksort,Qwen/Qwen2.5-Coder-32B-Instruct,hard,True,none,,0.0547,,"def quicksort(nums: list[int]) -> list[int]:
+    if len(nums) <= 1:
+        return nums
+    pivot = nums[len(nums) // 2]
+    left = [x for x in nums if x < pivot]
+    middle = [x for x in nums if x == pivot]
+    right = [x for x in nums if x > pivot]
+    return quicksort(left) + middle + quicksort(right)"
+hard_02_longest_increasing_subsequence,Qwen/Qwen2.5-Coder-32B-Instruct,hard,True,none,,0.0412,,"def longest_increasing_subsequence(nums: list[int]) -> int:
+    if not nums:
+        return 0
+    dp = [1] * len(nums)
+    for i in range(1, len(nums)):
+        for j in range(i):
+            if nums[i] > nums[j]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    return max(dp)"
+hard_03_balanced_brackets,Qwen/Qwen2.5-Coder-32B-Instruct,hard,True,none,,0.0265,,"def is_balanced(s: str) -> bool:
+    stack = []
+    bracket_map = {')': '(', ']': '[', '}': '{'}
+    for char in s:
+        if char in bracket_map.values():
+            stack.append(char)
+        elif char in bracket_map.keys():
+            if stack == [] or bracket_map[char] != stack.pop():
+                return False
+    return stack == []"
+hard_04_dijkstra_shortest_path,Qwen/Qwen2.5-Coder-32B-Instruct,hard,True,none,,0.0432,,"import heapq
+
+def shortest_path(graph: dict[str, dict[str, int]], start: str, end: str) -> int:
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0
+    priority_queue = [(0, start)]
+
+    while priority_queue:
+        current_distance, current_node = heapq.heappop(priority_queue)
+
+        if current_distance > distances[current_node]:
+            continue
+
+        for neighbor, weight in graph[current_node].items():
+            distance = current_distance + weight
+
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+    return distances[end] if distances[end] != float('inf') else -1"
+hard_05_knapsack_01,Qwen/Qwen2.5-Coder-32B-Instruct,hard,True,none,,0.0427,,"def knapsack(weights: list[int], values: list[int], capacity: int) -> int:
+    n = len(weights)
+    dp = [[0 for _ in range(capacity + 1)] for _ in range(n + 1)]
+    
+    for i in range(1, n + 1):
+        for w in range(1, capacity + 1):
+            if weights[i - 1] <= w:
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1])
+            else:
+                dp[i][w] = dp[i - 1][w]
+    
+    return dp[n][capacity]"
+hard_06_n_queens_count,Qwen/Qwen2.5-Coder-32B-Instruct,hard,True,none,,0.0439,,"def count_n_queens_solutions(n: int) -> int:
+    def is_safe(board, row, col):
+        for i in range(row):
+            if board[i] == col or board[i] - i == col - row or board[i] + i == col + row:
+                return False
+        return True
+
+    def solve_n_queens(row):
+        if row == n:
+            return 1
+        count = 0
+        for col in range(n):
+            if is_safe(board, row, col):
+                board[row] = col
+                count += solve_n_queens(row + 1)
+        return count
+
+    board = [-1] * n
+    return solve_n_queens(0)"

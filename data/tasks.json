@@ -1,0 +1,146 @@
+[
+  {
+    "task_id": "easy_01_sum_list",
+    "prompt": "Write a Python function `sum_list(nums: list[int]) -> int` that returns the sum of all integers in the list. Return 0 for an empty list.",
+    "complexity": "easy",
+    "entry_point": "sum_list",
+    "test_code": "assert sum_list([1, 2, 3]) == 6\nassert sum_list([]) == 0\nassert sum_list([-1, 1]) == 0\nassert sum_list([5]) == 5",
+    "tags": ["arithmetic", "list"]
+  },
+  {
+    "task_id": "easy_02_reverse_string",
+    "prompt": "Write a Python function `reverse_string(s: str) -> str` that returns the input string reversed.",
+    "complexity": "easy",
+    "entry_point": "reverse_string",
+    "test_code": "assert reverse_string('hello') == 'olleh'\nassert reverse_string('') == ''\nassert reverse_string('a') == 'a'\nassert reverse_string('ab cd') == 'dc ba'",
+    "tags": ["string"]
+  },
+  {
+    "task_id": "easy_03_is_palindrome",
+    "prompt": "Write a Python function `is_palindrome(s: str) -> bool` that returns True if the string reads the same forwards and backwards, False otherwise. Comparison is case-sensitive and exact (do not strip spaces or punctuation).",
+    "complexity": "easy",
+    "entry_point": "is_palindrome",
+    "test_code": "assert is_palindrome('racecar') is True\nassert is_palindrome('hello') is False\nassert is_palindrome('') is True\nassert is_palindrome('a') is True",
+    "tags": ["string"]
+  },
+  {
+    "task_id": "easy_04_fizzbuzz",
+    "prompt": "Write a Python function `fizzbuzz(n: int) -> list[str]` that returns a list of strings for numbers 1 to n inclusive: 'Fizz' for multiples of 3, 'Buzz' for multiples of 5, 'FizzBuzz' for multiples of both, otherwise the number as a string.",
+    "complexity": "easy",
+    "entry_point": "fizzbuzz",
+    "test_code": "assert fizzbuzz(5) == ['1', '2', 'Fizz', '4', 'Buzz']\nassert fizzbuzz(15)[-1] == 'FizzBuzz'\nassert fizzbuzz(1) == ['1']\nassert fizzbuzz(0) == []",
+    "tags": ["control-flow"]
+  },
+  {
+    "task_id": "easy_05_max_of_list",
+    "prompt": "Write a Python function `find_max(nums: list[int]) -> int` that returns the largest integer in a non-empty list without using the built-in `max` function.",
+    "complexity": "easy",
+    "entry_point": "find_max",
+    "test_code": "assert find_max([1, 5, 3]) == 5\nassert find_max([-3, -1, -7]) == -1\nassert find_max([42]) == 42\nassert find_max([2, 2, 2]) == 2",
+    "tags": ["list", "constraint"]
+  },
+  {
+    "task_id": "easy_06_count_vowels",
+    "prompt": "Write a Python function `count_vowels(s: str) -> int` that counts the number of vowels (a, e, i, o, u, case-insensitive) in the string.",
+    "complexity": "easy",
+    "entry_point": "count_vowels",
+    "test_code": "assert count_vowels('hello world') == 3\nassert count_vowels('AEIOU') == 5\nassert count_vowels('xyz') == 0\nassert count_vowels('') == 0",
+    "tags": ["string"]
+  },
+  {
+    "task_id": "medium_01_is_prime",
+    "prompt": "Write a Python function `is_prime(n: int) -> bool` that returns True if n is a prime number, False otherwise. Handle n <= 1 correctly.",
+    "complexity": "medium",
+    "entry_point": "is_prime",
+    "test_code": "assert is_prime(2) is True\nassert is_prime(17) is True\nassert is_prime(1) is False\nassert is_prime(0) is False\nassert is_prime(-5) is False\nassert is_prime(97) is True\nassert is_prime(100) is False",
+    "tags": ["math"]
+  },
+  {
+    "task_id": "medium_02_binary_search",
+    "prompt": "Write a Python function `binary_search(sorted_nums: list[int], target: int) -> int` that returns the index of target in the sorted ascending list using binary search, or -1 if not found. Must run in O(log n).",
+    "complexity": "medium",
+    "entry_point": "binary_search",
+    "test_code": "assert binary_search([1, 3, 5, 7, 9], 7) == 3\nassert binary_search([1, 3, 5, 7, 9], 2) == -1\nassert binary_search([], 1) == -1\nassert binary_search([5], 5) == 0",
+    "tags": ["search", "algorithm"]
+  },
+  {
+    "task_id": "medium_03_fibonacci_memo",
+    "prompt": "Write a Python function `fibonacci(n: int) -> int` that returns the n-th Fibonacci number (fibonacci(0) == 0, fibonacci(1) == 1) and must handle n up to 500 efficiently (use memoization or iteration, not naive recursion).",
+    "complexity": "medium",
+    "entry_point": "fibonacci",
+    "test_code": "assert fibonacci(0) == 0\nassert fibonacci(1) == 1\nassert fibonacci(10) == 55\nassert fibonacci(30) == 832040\nresult = fibonacci(200)\nassert isinstance(result, int)",
+    "tags": ["dynamic-programming", "recursion"]
+  },
+  {
+    "task_id": "medium_04_anagram_check",
+    "prompt": "Write a Python function `is_anagram(a: str, b: str) -> bool` that returns True if strings a and b are anagrams of each other (same letters, same counts, case-insensitive, ignoring spaces).",
+    "complexity": "medium",
+    "entry_point": "is_anagram",
+    "test_code": "assert is_anagram('listen', 'silent') is True\nassert is_anagram('hello', 'world') is False\nassert is_anagram('Dormitory', 'Dirty Room') is True\nassert is_anagram('', '') is True",
+    "tags": ["string", "hashing"]
+  },
+  {
+    "task_id": "medium_05_merge_sorted_lists",
+    "prompt": "Write a Python function `merge_sorted(a: list[int], b: list[int]) -> list[int]` that merges two already-sorted ascending lists into one sorted ascending list in O(n + m) time.",
+    "complexity": "medium",
+    "entry_point": "merge_sorted",
+    "test_code": "assert merge_sorted([1, 3, 5], [2, 4, 6]) == [1, 2, 3, 4, 5, 6]\nassert merge_sorted([], [1, 2]) == [1, 2]\nassert merge_sorted([1, 2], []) == [1, 2]\nassert merge_sorted([], []) == []",
+    "tags": ["algorithm", "list"]
+  },
+  {
+    "task_id": "medium_06_group_anagrams",
+    "prompt": "Write a Python function `group_anagrams(words: list[str]) -> list[list[str]]` that groups words that are anagrams of each other. Each group's words should preserve their original relative order, and groups should be ordered by the position of their first-appearing word. Return a list of lists.",
+    "complexity": "medium",
+    "entry_point": "group_anagrams",
+    "test_code": "result = group_anagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])\nassert sorted([sorted(g) for g in result]) == sorted([sorted(['eat', 'tea', 'ate']), sorted(['tan', 'nat']), ['bat']])\nassert group_anagrams([]) == []\nassert group_anagrams(['a']) == [['a']]",
+    "tags": ["string", "hashing"]
+  },
+  {
+    "task_id": "hard_01_quicksort",
+    "prompt": "Write a Python function `quicksort(nums: list[int]) -> list[int]` that returns a new list sorted in ascending order using the quicksort algorithm (do not use the built-in sorted() or .sort()).",
+    "complexity": "hard",
+    "entry_point": "quicksort",
+    "test_code": "assert quicksort([3, 1, 2]) == [1, 2, 3]\nassert quicksort([]) == []\nassert quicksort([5, 5, 5]) == [5, 5, 5]\nassert quicksort([9, -3, 0, 7, -3, 2]) == sorted([9, -3, 0, 7, -3, 2])",
+    "tags": ["algorithm", "sorting"]
+  },
+  {
+    "task_id": "hard_02_longest_increasing_subsequence",
+    "prompt": "Write a Python function `longest_increasing_subsequence(nums: list[int]) -> int` that returns the length of the longest strictly increasing subsequence in nums.",
+    "complexity": "hard",
+    "entry_point": "longest_increasing_subsequence",
+    "test_code": "assert longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18]) == 4\nassert longest_increasing_subsequence([]) == 0\nassert longest_increasing_subsequence([7, 7, 7]) == 1\nassert longest_increasing_subsequence([1, 2, 3, 4]) == 4",
+    "tags": ["dynamic-programming"]
+  },
+  {
+    "task_id": "hard_03_balanced_brackets",
+    "prompt": "Write a Python function `is_balanced(s: str) -> bool` that returns True if all brackets in the string among '()', '[]', '{}' are correctly matched and nested, False otherwise. Non-bracket characters should be ignored.",
+    "complexity": "hard",
+    "entry_point": "is_balanced",
+    "test_code": "assert is_balanced('([{}])') is True\nassert is_balanced('([)]') is False\nassert is_balanced('a(b)c[d]{e}') is True\nassert is_balanced('(') is False\nassert is_balanced('') is True",
+    "tags": ["stack"]
+  },
+  {
+    "task_id": "hard_04_dijkstra_shortest_path",
+    "prompt": "Write a Python function `shortest_path(graph: dict[str, dict[str, int]], start: str, end: str) -> int` implementing Dijkstra's algorithm on a weighted directed graph represented as an adjacency dict (graph[node] = {neighbor: weight}). Return the shortest path distance from start to end, or -1 if unreachable.",
+    "complexity": "hard",
+    "entry_point": "shortest_path",
+    "test_code": "g = {'A': {'B': 1, 'C': 4}, 'B': {'C': 2, 'D': 5}, 'C': {'D': 1}, 'D': {}}\nassert shortest_path(g, 'A', 'D') == 4\nassert shortest_path(g, 'A', 'A') == 0\nassert shortest_path({'A': {}, 'B': {}}, 'A', 'B') == -1",
+    "tags": ["graph", "algorithm"]
+  },
+  {
+    "task_id": "hard_05_knapsack_01",
+    "prompt": "Write a Python function `knapsack(weights: list[int], values: list[int], capacity: int) -> int` that solves the 0/1 knapsack problem: given item weights and values (same length lists) and a capacity, return the maximum total value achievable without exceeding capacity.",
+    "complexity": "hard",
+    "entry_point": "knapsack",
+    "test_code": "assert knapsack([1, 3, 4, 5], [1, 4, 5, 7], 7) == 9\nassert knapsack([], [], 10) == 0\nassert knapsack([5], [10], 4) == 0\nassert knapsack([2, 2, 2], [3, 3, 3], 6) == 9",
+    "tags": ["dynamic-programming"]
+  },
+  {
+    "task_id": "hard_06_n_queens_count",
+    "prompt": "Write a Python function `count_n_queens_solutions(n: int) -> int` that returns the number of distinct solutions to the N-Queens problem for a given board size n (n >= 0).",
+    "complexity": "hard",
+    "entry_point": "count_n_queens_solutions",
+    "test_code": "assert count_n_queens_solutions(1) == 1\nassert count_n_queens_solutions(2) == 0\nassert count_n_queens_solutions(4) == 2\nassert count_n_queens_solutions(0) == 1",
+    "tags": ["backtracking"]
+  }
+]

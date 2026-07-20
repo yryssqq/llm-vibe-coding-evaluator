@@ -1,0 +1,45 @@
+{
+  "n_evaluations": 36,
+  "overall_pass_at_1": 0.9722222222222222,
+  "pass_at_1_by_model": [
+    {
+      "model": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "pass@1": 1.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "pass@1": 0.9444444444444444
+    }
+  ],
+  "pass_at_1_by_complexity": [
+    {
+      "complexity": "easy",
+      "pass@1": 1.0
+    },
+    {
+      "complexity": "hard",
+      "pass@1": 0.9166666666666666
+    },
+    {
+      "complexity": "medium",
+      "pass@1": 1.0
+    }
+  ],
+  "error_distribution": [
+    {
+      "error_type": "UnsafeCode",
+      "share": 1.0
+    }
+  ],
+  "unsafe_code_rate_overall": 0.027777777777777776,
+  "unsafe_code_rate_by_model": [
+    {
+      "model": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "unsafe_rate": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "unsafe_rate": 0.05555555555555555
+    }
+  ]
+}
