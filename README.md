@@ -4,13 +4,20 @@
 
 Measures what happens when you take LLM-generated code at face value.
 
+## Abstract
+
 "Vibe coding" means accepting model output with little or no review. The risks are usually described in words: hallucinated APIs, silent logic bugs, unsafe operations. This turns that into numbers. It feeds algorithmic tasks to a model, runs each generated solution in a sandbox against real tests, and reports pass rate, failure types, and how often the model reaches for filesystem/network/`eval` access it was never asked for.
 
 Companion to my article, *Vibe Coding and the Future of Software Development* (Curieux Academic Journal, p. 155): https://www.curieuxacademicjournal.com/_files/ugd/99711c_00f1cef862a8433e9766f5b902b06f85.pdf
 
-## Results
+## Methodology
 
-18 tasks (6 easy, 6 medium, 6 hard), run on two models.
+- **Tasks**: 18 algorithmic problems (`data/tasks.json`), 6 each at easy/medium/hard: strings, search, dynamic programming, graph shortest-path, backtracking. Each ships a prompt, an entry point, and assert-based tests.
+- **Models**: `Qwen2.5-Coder-32B-Instruct` (code-specialized) vs. `Llama-3.1-8B-Instruct` (general, 4x smaller), same prompt, one sample per task.
+- **Execution**: each reply is stripped to raw code, screened by an AST pass, then run in its own subprocess under a timeout and CPU/memory limits.
+- **Aggregation**: results go to CSV, aggregated with pandas (pass@1, error types, unsafe rate), charts with seaborn.
+
+## Empirical Results & Key Findings
 
 | model | pass@1 | unsafe code |
 |---|---|---|
@@ -18,6 +25,8 @@ Companion to my article, *Vibe Coding and the Future of Software Development* (C
 | Llama-3.1-8B-Instruct | 17/18 (94%) | 6% |
 
 ![pass@1 by model](results/report/pass_rate_by_model.png)
+
+![error type vs complexity](results/report/error_vs_complexity.png)
 
 The code-specialized model got everything right. The general model's one miss is the interesting case. On the Dijkstra task Llama-3.1-8B wrote a correct solution but `import`ed `sys` just to use `sys.maxsize` as a starting "infinity". The safety screen flags any `sys` import, so it scored `UnsafeCode` instead of pass.
 
